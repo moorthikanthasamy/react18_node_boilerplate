@@ -7,10 +7,11 @@ import streamContent from './ServerSidePageProcessor';
 let mobileCSS = '', tabletCSS = '', desktopCSS = '', manifestContentClientJS = '', clientCSSContent = '';
 
 const getDeviceSpecificCSS = () => {
-	let commonCSSFilePath = path.join(__dirname, '../../../../dist/assets/common.css');
-	let mobileCSSFilePath = path.join(__dirname, '../../../../dist/assets/mobile.css');
-	let tabletCSSFilePath = path.join(__dirname, '../../../../dist/assets/tablet.css');
-	let desktopCSSFilePath = path.join(__dirname, '../../../../dist/assets/desktop.css');
+	let commonCSSFilePath = path.join(__dirname, '../../../../../dist/common.css');
+	let mobileCSSFilePath = path.join(__dirname, '../../../../../dist/mobile.css');
+	let tabletCSSFilePath = path.join(__dirname, '../../../../../dist/tablet.css');
+	let desktopCSSFilePath = path.join(__dirname, '../../../../../dist/page1_bundle.css');
+	console.log("🚀 ~ file: PageProcessor.js ~ line 14 ~ getDeviceSpecificCSS ~ desktopCSSFilePath", desktopCSSFilePath)
 
 	if (fs.existsSync(commonCSSFilePath)) {
 		var commonCSSContent = fs.readFileSync(commonCSSFilePath, 'utf8');
@@ -33,7 +34,7 @@ const getDeviceSpecificCSS = () => {
 };
 
 let getPage1StaticAssets = () => {
-	const manifestFilePath = path.join(__dirname, '../../../../dist/assets/manifest.json');
+	const manifestFilePath = path.join(__dirname, '../../../../../dist/manifest.json');
 	if (fs.existsSync(manifestFilePath)) {
 		let manifestContent = JSON.parse(fs.readFileSync(manifestFilePath, 'utf8'));
 		manifestContentClientJS = manifestContent['page1_bundle.js'];
@@ -51,8 +52,8 @@ const page1Processor = function (req, res) {
 		clientCSSContent = desktopCSS;
 	}
 	let params = {
-		clientCSSContent: clientCSSContent,
-		manifestContentClientJS: manifestContentClientJS,
+		css: clientCSSContent,
+		clientjs: manifestContentClientJS,
 		deviceType: device
 	};
 	res.type('html');

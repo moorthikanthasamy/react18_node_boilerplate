@@ -5,10 +5,9 @@ import bodyParser from 'body-parser'
 import path from "path";
 import express from "express";
 
-let appContext = '';
-let distDir = path.join(__dirname, '../../../dist/assets');
-let staticAssetsPath = appContext + '/v1/assets';
-
+let appContext = '/app';
+let distDir = path.join(__dirname, '../../../dist/');
+let staticAssetsPath = appContext + '/assets';
 app.use(staticAssetsPath, express.static(distDir));
 
 app.use(bodyParser.json())

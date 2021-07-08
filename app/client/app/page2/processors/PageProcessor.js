@@ -33,7 +33,7 @@ const getDeviceSpecificCSS = () => {
 };
 
 let getPage2StaticAssets = () => {
-	const manifestFilePath = path.join(__dirname, '../../../../dist/assets/manifest.json');
+	const manifestFilePath = path.join(__dirname, '../../../../../dist/manifest.json');
 	if (fs.existsSync(manifestFilePath)) {
 		let manifestContent = JSON.parse(fs.readFileSync(manifestFilePath, 'utf8'));
 		manifestContentClientJS = manifestContent['page2_bundle.js'];

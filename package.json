@@ -6,7 +6,6 @@
   "dependencies": {
     "@babel/runtime": "7.14.6",
     "body-parser": "1.19.0",
-    "bootstrap": "5.0.2",
     "cookie-parser": "1.4.5",
     "express": "4.17.1",
     "mobile-detect": "1.4.5",
@@ -36,7 +35,8 @@
   "scripts": {
     "build:dev": "rm -rf ./dist && webpack --config ./webpack/dev.js",
     "build:prod": "rm -rf ./dist && webpack --config ./webpack/prod.js",
-    "start:dev": "node ./dist/server-bundle.js"
+    "start:dev": "NODE_ENV=development node ./dist/server-bundle.js",
+    "start:prod": "NODE_ENV=production node ./dist/server-bundle.js"
   },
   "repository": {
     "type": "git",

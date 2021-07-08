@@ -3,9 +3,7 @@ import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import Component2 from '../components/app/component2';
 
-let appContext = '';
-const staticAssetsPath = appContext + '/v1/assets';
-
+const staticAssetsPath = '/app/assets';
 export default class ComponentFactory {
 	static getHTMLHead() {
 		return `
